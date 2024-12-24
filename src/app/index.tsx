@@ -1,6 +1,6 @@
 import { Link } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
+import { FlatList, FlatListComponent, ListRenderItemInfo, StatusBar, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Page() {
@@ -13,19 +13,63 @@ export default function Page() {
   );
 }
 
+const DATA = [
+  {
+    id: '1',
+    title: 'First Item',
+  },
+  {
+    id: '2',
+    title: 'Second Item',
+  },
+  {
+    id: '3',
+    title: 'Third Item',
+  },
+];
+
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    // backgroundColor: '#ff2',
+    padding: 10,
+    marginVertical: 4,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 24,
+  },
+});
+
 function Content() {
   return (
     <View className="flex-1">
       <View className="py-12 md:py-24 lg:py-32 xl:py-48">
-        <View className="px-4 md:px-6">
+        <View className="px-4 md:px-6 bg-blue-900">
           <View className="flex flex-col items-center gap-4 text-center">
             <Text
               role="heading"
-              className="text-3xl text-center native:text-5xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl"
+              className="text-3xl text-center native:text-5xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl dark:text-yellow-300"
             >
               Welcome to Project Schat
             </Text>
-            <Text className="mx-auto max-w-[700px] text-lg text-center text-gray-500 md:text-xl dark:text-gray-400">
+            <View className="bg-yellow-900">
+              <FlatList
+                data={DATA}
+                renderItem={({ item }) => <Item title={item.title} />}
+                keyExtractor={item => item.id}
+              />
+            </View>
+            <Text className="mx-auto max-w-[700px] text-lg text-center md:text-xl dark:text-yellow-400">
               Discover and collaborate on acme. Explore our services now.
             </Text>
 
@@ -50,24 +94,24 @@ function Header() {
   return (
     <View style={{ paddingTop: top }}>
       <View className="px-4 lg:px-6 h-14 flex items-center flex-row justify-between bg-gray-900">
-        <Link className="font-bold flex-1 items-center justify-center" href="/">
+        <Link className="font-bold flex-1 items-center justify-center dark:text-yellow-500" href="/">
           ACME
         </Link>
         <View className="flex flex-row gap-4 sm:gap-6">
           <Link
-            className="text-md font-medium hover:underline web:underline-offset-4"
+            className="text-md font-medium hover:underline web:underline-offset-4 dark:text-yellow-500"
             href="/"
           >
             About
           </Link>
           <Link
-            className="text-md font-medium hover:underline web:underline-offset-4"
+            className="text-md font-medium hover:underline web:underline-offset-4 dark:text-yellow-500"
             href="/"
           >
             Product
           </Link>
           <Link
-            className="text-md font-medium hover:underline web:underline-offset-4"
+            className="text-md font-medium hover:underline web:underline-offset-4 dark:text-yellow-500"
             href="/"
           >
             Pricing
@@ -86,7 +130,7 @@ function Footer() {
       style={{ paddingBottom: bottom }}
     >
       <View className="py-6 flex-1 items-start px-4 md:px-6 ">
-        <Text className={"text-center text-gray-700"}>
+        <Text className={"text-center text dark:text-yellow-500"}>
           © {new Date().getFullYear()} Me
         </Text>
       </View>
