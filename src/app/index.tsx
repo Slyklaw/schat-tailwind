@@ -30,7 +30,7 @@ const DATA = [
 
 const Item = ({ title }) => (
   <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
+    <Text className="text-yellow-200" style={styles.title}>{title}</Text>
   </View>
 );
 
@@ -62,7 +62,7 @@ function Content() {
             >
               Welcome to Project Schat
             </Text>
-            <View className="bg-yellow-900">
+            <View>
               <FlatList
                 data={DATA}
                 renderItem={({ item }) => <Item title={item.title} />}
