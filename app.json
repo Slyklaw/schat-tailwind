@@ -15,6 +15,9 @@
         }
       ]
     ],
+    "experiments": {
+          "baseUrl": "/schat-tailwind"
+        },
     "name": "schat-tailwind",
     "slug": "schat-tailwind"
   }
