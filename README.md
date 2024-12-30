@@ -7,3 +7,9 @@ Use [Expo Router](https://docs.expo.dev/router/introduction/) with [Nativewind](
 ```sh
 npx create-expo-app -e with-router-tailwind
 ```
+
+Serve Locally:
+  npm run web
+
+Deploy to Github Pages:
+  npm run deploy

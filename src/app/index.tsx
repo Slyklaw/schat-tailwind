@@ -102,19 +102,7 @@ function Header() {
             className="text-md font-medium hover:underline web:underline-offset-4 dark:text-yellow-500"
             href="/"
           >
-            About
-          </Link>
-          <Link
-            className="text-md font-medium hover:underline web:underline-offset-4 dark:text-yellow-500"
-            href="/"
-          >
-            Product
-          </Link>
-          <Link
-            className="text-md font-medium hover:underline web:underline-offset-4 dark:text-yellow-500"
-            href="/"
-          >
-            Pricing
+            🔝 Home
           </Link>
         </View>
       </View>
